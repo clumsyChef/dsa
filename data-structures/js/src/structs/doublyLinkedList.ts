@@ -19,7 +19,7 @@ class DoublyLinkedList<T> {
 		this.head = this.tail = null;
 	}
 
-	append(data: T): DoublyLinkedList<T> {
+	insertAtEnd(data: T): DoublyLinkedList<T> {
 		const newNode = new NewNode(data);
 		if (this.head === null) {
 			this.head = this.tail = newNode;
@@ -35,7 +35,7 @@ class DoublyLinkedList<T> {
 		return this;
 	}
 
-	pop(): NewNode<T> | undefined {
+	removeFromEnd(): NewNode<T> | undefined {
 		if (this.tail === null) return undefined;
 		const current = this.tail;
 		this.tail = current.prev;
@@ -50,7 +50,7 @@ class DoublyLinkedList<T> {
 		return current;
 	}
 
-	prepend(data: T): DoublyLinkedList<T> {
+	insertAtStart(data: T): DoublyLinkedList<T> {
 		const newNode = new NewNode(data);
 		if (this.head === null) {
 			this.head = this.tail = newNode;
@@ -64,15 +64,15 @@ class DoublyLinkedList<T> {
 		return this;
 	}
 
-	// shift(): NewNode<T> | undefined {
+	removeFromStart(): NewNode<T> | undefined {
+		//
+	}
+
+	// insertInbetween(data: T, index: number): DoublyLinkedList<T> {
 	// 	//
 	// }
 
-	// insertAt(data: T, index: number): DoublyLinkedList<T> {
-	// 	//
-	// }
-
-	// deleteAt(index: number): NewNode<T> | undefined {
+	// removeFromBetween(index: number): NewNode<T> | undefined {
 	// 	//
 	// }
 
@@ -80,7 +80,7 @@ class DoublyLinkedList<T> {
 	// 	//
 	// }
 
-	// updateItem(index: number, newValue: T): T | undefined {
+	// updateAtIndex(index: number, newValue: T): T | undefined {
 	// 	//
 	// }
 
@@ -88,11 +88,11 @@ class DoublyLinkedList<T> {
 	// 	//
 	// }
 
-	// merge(otherDoublyLinkedList: DoublyLinkedList<T>): void {
+	// mergeTwoLists(otherDoublyLinkedList: DoublyLinkedList<T>): void {
 	// 	//
 	// }
 }
 
 const a = new DoublyLinkedList<number>();
 
-a.append(1).append(2).append(3);
+a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(3);

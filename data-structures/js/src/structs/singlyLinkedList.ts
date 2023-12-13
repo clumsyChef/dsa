@@ -134,7 +134,7 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	deleteFromBetween(index: number): NewNode<T> | undefined {
+	removeFromBetween(index: number): NewNode<T> | undefined {
 		if (index < 0 || index >= this.length) return undefined;
 		if (index === 0) return this.removeFromStart();
 		if (index === this.length - 1) return this.removeFromEnd();
