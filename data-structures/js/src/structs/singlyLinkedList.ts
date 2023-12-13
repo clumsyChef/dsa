@@ -29,7 +29,7 @@ class SinglyLinkedList<T> {
 		O(n): if we don't have tail as then it would require to traverse through the list.
 		O(1): we got tail so BAM, its done.	
 	*/
-	append(data: T): SinglyLinkedList<T> {
+	insertAtEnd(data: T): SinglyLinkedList<T> {
 		const newNode = new NewNode(data);
 		if (this.head === null) {
 			this.head = this.tail = newNode;
@@ -46,7 +46,7 @@ class SinglyLinkedList<T> {
 		O(n): if we don't have tail as then it would require to traverse through the list.
 		O(1): we got tail so BAM, its done.
 	*/
-	pop(): NewNode<T> | undefined {
+	removeFromEnd(): NewNode<T> | undefined {
 		if (this.head === null) return undefined;
 
 		let current = this.head;
@@ -72,7 +72,7 @@ class SinglyLinkedList<T> {
 	/*
 		O(1): as we have head so BAM. its done.
 	*/
-	prepend(data: T): SinglyLinkedList<T> {
+	insertAtStart(data: T): SinglyLinkedList<T> {
 		const newNode = new NewNode(data);
 		if (this.head === null) {
 			this.head = this.tail = newNode;
@@ -87,7 +87,7 @@ class SinglyLinkedList<T> {
 	/*
 		O(1): as we have head so BAM, its done.
 	*/
-	shift(): NewNode<T> | undefined {
+	removeFromStart(): NewNode<T> | undefined {
 		if (this.head === null) return undefined;
 
 		const current = this.head;
@@ -103,15 +103,15 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	insertAt(data: T, index: number): SinglyLinkedList<T> {
+	insertInbetween(data: T, index: number): SinglyLinkedList<T> {
 		if (index < 0 || index > this.length) {
 			console.log("Unable to insert");
 			return this;
 		}
 
-		if (index === 0) return this.prepend(data);
+		if (index === 0) return this.insertAtStart(data);
 
-		if (index === this.length) return this.append(data);
+		if (index === this.length) return this.insertAtEnd(data);
 
 		if (this.head) {
 			const newNode = new NewNode(data);
@@ -134,10 +134,10 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	deleteAt(index: number): NewNode<T> | undefined {
+	deleteFromBetween(index: number): NewNode<T> | undefined {
 		if (index < 0 || index >= this.length) return undefined;
-		if (index === 0) return this.shift();
-		if (index === this.length - 1) return this.pop();
+		if (index === 0) return this.removeFromStart();
+		if (index === this.length - 1) return this.removeFromEnd();
 
 		let tempPointer = this.head;
 		let previous = null;
@@ -175,7 +175,7 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	updateItem(index: number, newValue: T): T | undefined {
+	updateAtIndex(index: number, newValue: T): T | undefined {
 		if (index < 0 || index >= this.length) return undefined;
 		let tempPointer = this.head;
 		for (let i = 0; i < index; i++) {
@@ -220,7 +220,7 @@ class SinglyLinkedList<T> {
 		O(1): as we have tail of lists.
 		O(n): as we need to traverse through the first list to the end which will be O(n), and then we need to join the list which is O(1), so in the end it will be O(n)
 	*/
-	merge(otherSinglyLinkedList: SinglyLinkedList<T>): void {
+	mergeTwoLists(otherSinglyLinkedList: SinglyLinkedList<T>): void {
 		this.length += otherSinglyLinkedList.length;
 		if (this.tail) {
 			this.tail.next = otherSinglyLinkedList.head;
@@ -234,7 +234,3 @@ class SinglyLinkedList<T> {
 const a = new SinglyLinkedList<number>();
 
 const b = new SinglyLinkedList<number>();
-
-// a.append(0).append(1).append(7).append(2).append(3);
-a.append(1).append(2);
-b.append(3).append(4);

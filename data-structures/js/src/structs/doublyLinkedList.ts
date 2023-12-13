@@ -50,15 +50,25 @@ class DoublyLinkedList<T> {
 		return current;
 	}
 
-	// prepend(data: T): SinglyLinkedList<T> {
-	// 	//
-	// }
+	prepend(data: T): DoublyLinkedList<T> {
+		const newNode = new NewNode(data);
+		if (this.head === null) {
+			this.head = this.tail = newNode;
+		} else {
+			this.head.prev = newNode;
+			newNode.next = this.head;
+			this.head = newNode;
+		}
+
+		this.length++;
+		return this;
+	}
 
 	// shift(): NewNode<T> | undefined {
 	// 	//
 	// }
 
-	// insertAt(data: T, index: number): SinglyLinkedList<T> {
+	// insertAt(data: T, index: number): DoublyLinkedList<T> {
 	// 	//
 	// }
 
@@ -78,7 +88,7 @@ class DoublyLinkedList<T> {
 	// 	//
 	// }
 
-	// merge(otherSinglyLinkedList: SinglyLinkedList<T>): void {
+	// merge(otherDoublyLinkedList: DoublyLinkedList<T>): void {
 	// 	//
 	// }
 }
