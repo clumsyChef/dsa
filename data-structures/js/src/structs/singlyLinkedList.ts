@@ -27,7 +27,7 @@ class SinglyLinkedList<T> {
 
 	/*
 		O(n): if we don't have tail as then it would require to traverse through the list.
-		O(1): we got tail so BAM, its done.	
+		O(1): if we got tail so BAM, its done.	
 	*/
 	insertAtEnd(data: T): SinglyLinkedList<T> {
 		const newNode = new NewNode(data);
@@ -103,11 +103,8 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	insertInbetween(data: T, index: number): SinglyLinkedList<T> {
-		if (index < 0 || index > this.length) {
-			console.log("Unable to insert");
-			return this;
-		}
+	insertInbetween(data: T, index: number = -1): SinglyLinkedList<T> | undefined {
+		if (index < 0 || index > this.length) return undefined;
 
 		if (index === 0) return this.insertAtStart(data);
 
@@ -128,13 +125,15 @@ class SinglyLinkedList<T> {
 			tempPointer.next = newNode;
 		}
 
+		this.length++;
+
 		return this;
 	}
 
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	removeFromBetween(index: number): NewNode<T> | undefined {
+	removeFromBetween(index: number = -1): NewNode<T> | undefined {
 		if (index < 0 || index >= this.length) return undefined;
 		if (index === 0) return this.removeFromStart();
 		if (index === this.length - 1) return this.removeFromEnd();
@@ -154,13 +153,15 @@ class SinglyLinkedList<T> {
 			tempPointer.next = null;
 		}
 
+		this.length--;
+
 		return tempPointer ?? undefined;
 	}
 
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	getItem(index: number): T | undefined {
+	getItem(index: number = -1): T | undefined {
 		if (index < 0 || index >= this.length) return undefined;
 		let tempPointer = this.head;
 		for (let i = 0; i < index; i++) {
@@ -175,8 +176,8 @@ class SinglyLinkedList<T> {
 	/*
 		O(n): as we need to traverse through the list
 	*/
-	updateAtIndex(index: number, newValue: T): T | undefined {
-		if (index < 0 || index >= this.length) return undefined;
+	updateAtIndex(index: number = -1, newValue: T): boolean {
+		if (index < 0 || index >= this.length) return false;
 		let tempPointer = this.head;
 		for (let i = 0; i < index; i++) {
 			if (tempPointer && tempPointer.next) {
@@ -188,7 +189,7 @@ class SinglyLinkedList<T> {
 			tempPointer.data = newValue;
 		}
 
-		return tempPointer?.data ?? undefined;
+		return true;
 	}
 
 	/*
@@ -220,17 +221,19 @@ class SinglyLinkedList<T> {
 		O(1): as we have tail of lists.
 		O(n): as we need to traverse through the first list to the end which will be O(n), and then we need to join the list which is O(1), so in the end it will be O(n)
 	*/
-	mergeTwoLists(otherSinglyLinkedList: SinglyLinkedList<T>): void {
+	mergeTwoLists(otherSinglyLinkedList: SinglyLinkedList<T>): boolean {
 		this.length += otherSinglyLinkedList.length;
 		if (this.tail) {
 			this.tail.next = otherSinglyLinkedList.head;
 			this.tail = otherSinglyLinkedList.tail;
 		}
 
-		return;
+		return true;
 	}
 }
 
 const a = new SinglyLinkedList<number>();
 
 const b = new SinglyLinkedList<number>();
+
+a.insertAtEnd(1).insertAtEnd(3);
