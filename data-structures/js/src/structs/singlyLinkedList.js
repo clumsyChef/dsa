@@ -257,6 +257,23 @@ class SinglyLinkedList {
 
 		return false;
 	}
+
+	// for the below function we will consider that the tail don't exists.
+	findKFromEnd(index) {
+		let [forward, backward] = [this.head, this.head];
+		if (index <= 0 || this.length === 0) return null;
+
+		for (let i = 1; i < index; i++) {
+			forward = forward.next;
+		}
+
+		while (forward.next) {
+			backward = backward.next;
+			forward = forward.next;
+		}
+
+		return backward;
+	}
 }
 
 const a = new SinglyLinkedList();
