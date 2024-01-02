@@ -295,6 +295,22 @@ class SinglyLinkedList {
 
 		return this;
 	}
+
+	removeDuplicates() {
+		const mySet = new Set();
+		let tempPointer = this.head;
+		const newList = new SinglyLinkedList();
+
+		for (let i = 0; i < this.length; i++) {
+			if (!mySet.has(tempPointer.data)) {
+				mySet.add(tempPointer.data);
+				newList.insertAtEnd(tempPointer.data);
+			}
+			tempPointer = tempPointer.next;
+		}
+
+		console.log("asdf", newList);
+	}
 }
 
 const a = new SinglyLinkedList();
@@ -308,4 +324,6 @@ const a = new SinglyLinkedList();
 
 // a.findMiddleNode();
 
-a.insertAtEnd(3).insertAtEnd(8).insertAtEnd(5).insertAtEnd(10).insertAtEnd(2).insertAtEnd(1);
+a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(1).insertAtEnd(3).insertAtEnd(2).insertAtEnd(4);
+
+a.removeDuplicates();
