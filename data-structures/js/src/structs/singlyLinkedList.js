@@ -274,6 +274,27 @@ class SinglyLinkedList {
 
 		return backward;
 	}
+
+	seperateFrom(value) {
+		const lessThan = new SinglyLinkedList();
+		const greaterThan = new SinglyLinkedList();
+
+		let tempPointer = this.head;
+		while (tempPointer) {
+			if (tempPointer.data < value) {
+				lessThan.insertAtEnd(tempPointer.data);
+			} else {
+				greaterThan.insertAtEnd(tempPointer.data);
+			}
+			tempPointer = tempPointer.next;
+		}
+
+		lessThan.tail.next = greaterThan.head;
+		this.head = lessThan.head;
+		this.tail = greaterThan.tail;
+
+		return this;
+	}
 }
 
 const a = new SinglyLinkedList();
@@ -287,8 +308,4 @@ const a = new SinglyLinkedList();
 
 // a.findMiddleNode();
 
-a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(3).insertAtEnd(4).insertAtEnd(5).insertAtEnd(6);
-
-if (a.tail && a.head) {
-	a.tail.next = a.head;
-}
+a.insertAtEnd(3).insertAtEnd(8).insertAtEnd(5).insertAtEnd(10).insertAtEnd(2).insertAtEnd(1);
