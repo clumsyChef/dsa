@@ -308,8 +308,43 @@ class SinglyLinkedList {
 			}
 			tempPointer = tempPointer.next;
 		}
+	}
 
-		console.log("asdf", newList);
+	binaryToDecimal() {
+		let sum = 0;
+		let tempPointer = this.head;
+		for (let i = this.length - 1; i >= 0; i--) {
+			sum += 2 ** i * tempPointer.data;
+			tempPointer = tempPointer.next;
+		}
+		console.log("Binary -->", sum);
+		return sum;
+	}
+
+	// this was hard to do
+	reverseBetween(m, n) {
+		if (this.head === null) return;
+
+		const dummy = new NewNode(-1);
+		dummy.next = this.head;
+		let prev = dummy;
+
+		for (let i = 0; i < m; i++) {
+			prev = prev.next;
+		}
+
+		let current = prev.next;
+
+		for (let i = 0; i < n - m; i++) {
+			const temp = current.next;
+			current.next = temp.next;
+			temp.next = prev.next;
+			prev.next = temp;
+		}
+
+		this.head = dummy.next;
+
+		return this;
 	}
 }
 
@@ -324,6 +359,16 @@ const a = new SinglyLinkedList();
 
 // a.findMiddleNode();
 
-a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(1).insertAtEnd(3).insertAtEnd(2).insertAtEnd(4);
+// a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(1).insertAtEnd(3).insertAtEnd(2).insertAtEnd(4);
 
-a.removeDuplicates();
+// a.removeDuplicates();
+
+a.insertAtEnd(1).insertAtEnd(2).insertAtEnd(3).insertAtEnd(4).insertAtEnd(5).insertAtEnd(6);
+
+a.reverseBetween(1, 4);
+
+const b = new SinglyLinkedList();
+
+b.insertAtEnd(1).insertAtEnd(2).insertAtEnd(3).insertAtEnd(4).insertAtEnd(5);
+
+// b.reverseBetween(1, 3);
