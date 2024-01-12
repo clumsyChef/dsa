@@ -7,4 +7,5 @@ import ArrayAndHashing from "./scripts/array-and-hashing";
 // Array And Hashing:
 
 // ArrayAndHashing.containsDuplicate();
-ArrayAndHashing.validAnagram();
+// ArrayAndHashing.validAnagram();
+ArrayAndHashing.twoSum();
