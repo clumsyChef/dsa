@@ -67,8 +67,32 @@ class BST {
 				tempPointer = tempPointer.right;
 			}
 		}
+	}
 
-		return this;
+	contains(value) {
+		if (!this.root) return undefined;
+		let tempPointer = this.root;
+		while (tempPointer) {
+			if (value < tempPointer.value) {
+				tempPointer = tempPointer.left;
+			} else if (value > tempPointer.value) {
+				tempPointer = tempPointer.right;
+			} else {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	minimumValue() {
+		if (!this.root) return undefined;
+		let tempPointer = this.root;
+		while (tempPointer.left) {
+			tempPointer = tempPointer.left;
+		}
+
+		console.log(tempPointer.value);
 	}
 }
 
