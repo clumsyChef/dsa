@@ -14,6 +14,7 @@ class Stack {
 		this.length = 0;
 	}
 
+	// BigO = O(1)
 	push(element) {
 		const newNode = new NewNode(element);
 		if (this.length) {

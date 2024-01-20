@@ -14,6 +14,9 @@ class BST {
 		this.root = null;
 	}
 
+	// Balanced BST BigO = O(logN)
+	// one sided BST BigO = O(N)
+
 	insert_using_recursion(value, currentRoot = this.root) {
 		if (this.root === null) {
 			const newNode = new NewNode(value);
@@ -98,3 +101,6 @@ class BST {
 
 const a = new BST();
 console.log(a);
+
+// big O
+// Insert , remove, lookup ===> O(logN)

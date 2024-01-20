@@ -30,6 +30,7 @@ class Queue {
 	}
 
 	// removing the first element
+	// BigO = O(1)
 	dequeue() {
 		if (this.length === 0) return undefined;
 		const tempPointer = this.first;
