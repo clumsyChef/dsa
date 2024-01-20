@@ -8,4 +8,5 @@ import ArrayAndHashing from "./scripts/array-and-hashing";
 
 // ArrayAndHashing.containsDuplicate();
 // ArrayAndHashing.validAnagram();
-ArrayAndHashing.twoSum();
+// ArrayAndHashing.twoSum();
+ArrayAndHashing.groupAnagrams();

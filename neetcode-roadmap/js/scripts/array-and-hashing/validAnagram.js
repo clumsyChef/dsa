@@ -23,10 +23,17 @@ const main = {
 
 		return charMap.every((count) => count === 0);
 	},
+
+	solution_3(s, t) {
+		const _s = s.split("").sort().join("");
+		const _t = t.split("").sort().join("");
+
+		return _s === _t;
+	},
 };
 
 const validAnagram = () => {
-	console.log(main.solution_1("anagram", "nagaram"));
+	console.log(main.solution_2("anagram", "nagaram"));
 	console.log(main.solution_2("rat", "cat"));
 };
 
