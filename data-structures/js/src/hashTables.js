@@ -49,6 +49,3 @@ class HashTable {
 
 	// Hash table questions
 }
-
-const a = new HashTable();
-a.set("lumber", 70).set("washers", 50).set("bolts", 1400);
