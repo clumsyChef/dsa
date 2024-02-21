@@ -98,7 +98,7 @@ class BST {
 	}
 
 	breadthFirstSearch() {
-		// [10,6,15,3,8,20]
+		// [10, 6, 15, 3, 8, 20]
 		const queue = [];
 		const visited = [];
 		if (!this.root) return [];
@@ -110,6 +110,51 @@ class BST {
 			if (item.right) queue.push(item.right);
 		}
 		return visited;
+	}
+
+	depthFirstSearchPreOrder() {
+		// [10, 6, 3, 8, 15, 20]
+		if (!this.root) return [];
+		let data = [];
+		let current = this.root;
+		function traverse(node) {
+			data.push(node.value);
+			if (node.left) traverse(node.left);
+			if (node.right) traverse(node.right);
+		}
+
+		traverse(current);
+		return data;
+	}
+
+	depthFirstSearchPostOrder() {
+		// [3, 8, 6, 20, 15, 10]
+		if (!this.root) return [];
+		let data = [];
+		let current = this.root;
+		function traverse(node) {
+			if (node.left) traverse(node.left);
+			if (node.right) traverse(node.right);
+			data.push(node.value);
+		}
+
+		traverse(current);
+		return data;
+	}
+
+	depthFirstSearchInOrder() {
+		// [3, 6, 8, 10, 15, 20]
+		if (!this.root) return [];
+		let data = [];
+		let current = this.root;
+		function traverse(node) {
+			if (node.left) traverse(node.left);
+			data.push(node.value);
+			if (node.right) traverse(node.right);
+		}
+
+		traverse(current);
+		return data;
 	}
 }
 
@@ -131,6 +176,9 @@ a.insert_using_while_loop(10)
 // visited: [10, 6, 15, 3, 8, 20]
 
 console.log(a.breadthFirstSearch());
+console.log(a.depthFirstSearchPreOrder());
+console.log(a.depthFirstSearchPostOrder());
+console.log(a.depthFirstSearchInOrder());
 
 // big O
 // Insert , remove, lookup ===> O(logN)
