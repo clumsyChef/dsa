@@ -15,7 +15,7 @@
 
 class BinaryHeap {
 	constructor() {
-		this.values = [41, 39, 33, 18, 27, 12];
+		this.values = [];
 	}
 
 	bubbleUp() {
@@ -44,37 +44,51 @@ class BinaryHeap {
 	// 1. remove the first item from array and replace it with the last item
 	// 2 the take the first item (which was the last item), and bubble it down. meaning compare it with the 2 children, whichever children is larger, swap with it.
 	extractMax() {
-		const max = this.values[0];
 		const min = this.values[this.values.length - 1];
 		this.values[0] = min;
 		this.values.pop();
 
 		let elementInd = 0;
 		let [leftChildInd, rightChildInd] = [2 * elementInd + 1, 2 * elementInd + 2];
+		let [leftVal, rightVal] = [this.values[leftChildInd], this.values[rightChildInd]];
 
-		while (this.values[leftChildInd] || this.values[rightChildInd]) {
+		while (leftVal || rightVal) {
 			const elementVal = this.values[elementInd];
 			let swapInd;
-			if (leftChildInd && !rightChildInd) {
+			if (leftVal && !rightVal) {
 				swapInd = leftChildInd;
-			} else if (rightChildInd && !leftChildInd) {
+			} else if (rightVal && !leftVal) {
 				swapInd = rightChildInd;
 			} else {
-				swapInd = this.values[leftChildInd] > this.values[rightChildInd] ? leftChildInd : rightChildInd;
+				swapInd = leftVal > rightVal ? leftChildInd : rightChildInd;
 			}
+
+			if (this.values[elementInd] > this.values[swapInd]) break;
+
 			this.values[elementInd] = this.values[swapInd];
 			this.values[swapInd] = elementVal;
 
 			elementInd = swapInd;
 			[leftChildInd, rightChildInd] = [2 * elementInd + 1, 2 * elementInd + 2];
+			[leftVal, rightVal] = [this.values[leftChildInd], this.values[rightChildInd]];
 		}
+
+		return this.values;
 	}
 }
 
 const a = new BinaryHeap();
 
+const x = [41, 39, 33, 18, 27, 12];
+
+x.forEach((item) => a.insert(item));
+
+a.insert(55);
+
+// const r = a.extractMax();
+// console.log(r);
+
 // const x = [6, 12, 13, 11, 15, 5, 9, 8, 17, 1, 19, 36, 25, 4, 100];
-// x.forEach((item) => a.insert(item));
 
 // [100, 19, 36, 17, 12, 25, 5, 9, 15, 6, 11, 13, 8, 1, 4];
 // Original: [41, 39, 33, 18, 27, 12];
