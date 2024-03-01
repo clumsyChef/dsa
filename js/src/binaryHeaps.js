@@ -11,6 +11,11 @@
 
     for any child node at index n
     its parent is at index Floor((n - 1) / 2)
+
+	Big(O):
+	Insertion: O(logN)
+	Removal: O(logN)
+	Search: O(N)
 */
 
 class BinaryHeap {
