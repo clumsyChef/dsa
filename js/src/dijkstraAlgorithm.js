@@ -82,24 +82,24 @@ class WeightedGraph {
 	}
 }
 
-const a = new WeightedGraph();
-a.addVertex("A");
-a.addVertex("B");
-a.addVertex("C");
-a.addVertex("D");
-a.addVertex("E");
-a.addVertex("F");
+// const a = new WeightedGraph();
+// a.addVertex("A");
+// a.addVertex("B");
+// a.addVertex("C");
+// a.addVertex("D");
+// a.addVertex("E");
+// a.addVertex("F");
 
-a.addEdge("A", "B", 4);
-a.addEdge("A", "C", 2);
-a.addEdge("B", "E", 3);
-a.addEdge("C", "D", 2);
-a.addEdge("C", "F", 4);
-a.addEdge("D", "E", 3);
-a.addEdge("D", "F", 1);
-a.addEdge("E", "F", 1);
+// a.addEdge("A", "B", 4);
+// a.addEdge("A", "C", 2);
+// a.addEdge("B", "E", 3);
+// a.addEdge("C", "D", 2);
+// a.addEdge("C", "F", 4);
+// a.addEdge("D", "E", 3);
+// a.addEdge("D", "F", 1);
+// a.addEdge("E", "F", 1);
 
-console.log(a.adjacencyList);
+// console.log(a.adjacencyList);
 
 // const a = new PriorityQueue();
 
@@ -108,3 +108,24 @@ console.log(a.adjacencyList);
 // a.enqueue("G", 2);
 // a.enqueue("F", 8);
 // a.enqueue("E", 1);
+
+const ARR = [...Array(10000000)].map((_, i) => i + 1);
+
+let summation = 0;
+
+console.time("my-time");
+
+// for (let i in ARR) {
+// 	summation += ARR[i];
+// }
+
+// ARR.forEach((item) => {
+// 	summation += item;
+// });
+
+for (let i = 0; i < ARR.length; i++) {
+	summation += ARR[i];
+}
+
+console.timeEnd("my-time");
+console.log("ANS -->", summation); // 50000005000000
