@@ -4,6 +4,7 @@ import twoSum from "./twoSum";
 import groupAnagrams from "./groupAnagrams";
 import topKFrequentElements from "./topKFrequentElements";
 import productExceptSelf from "./productExceptSelf";
+import validSudoku from "./validSudoku";
 
 const ArrayAndHashing = {
 	containsDuplicate,
@@ -12,6 +13,7 @@ const ArrayAndHashing = {
 	groupAnagrams,
 	topKFrequentElements,
 	productExceptSelf,
+	validSudoku,
 };
 
 export default ArrayAndHashing;

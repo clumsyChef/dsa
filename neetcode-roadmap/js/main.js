@@ -11,4 +11,5 @@ import ArrayAndHashing from "./scripts/array-and-hashing";
 // ArrayAndHashing.twoSum();
 // ArrayAndHashing.groupAnagrams();
 // ArrayAndHashing.topKFrequentElements();
-ArrayAndHashing.productExceptSelf();
+// ArrayAndHashing.productExceptSelf();
+ArrayAndHashing.validSudoku();
