@@ -1,19 +1,64 @@
+class Node {
+	constructor(value, priority) {
+		this.value = value;
+		this.priority = priority;
+	}
+}
+
 class PriorityQueue {
 	constructor() {
-		this.values = [];
+		this.queue = [];
 	}
 
-	enqueue(val, priority) {
-		this.values.push({ val, priority });
-		this.sort();
+	bubbleUp() {
+		let elemInd = this.queue.length - 1;
+		let parentInd = Math.floor((elemInd - 1) / 2);
+		while (this.queue[elemInd].priority < this.queue[parentInd].priority) {
+			const current = this.queue[elemInd];
+			this.queue[elemInd] = this.queue[parentInd];
+			this.queue[parentInd] = current;
+		}
+
+		return this.queue;
 	}
 
-	dequeue() {
-		return this.values.shift();
+	insert(value, priority) {
+		const newNode = new Node(value, priority);
+		this.queue.push(newNode);
+		if (this.queue.length === 1) return this.queue;
+		return this.bubbleUp();
 	}
 
-	sort() {
-		this.values.sort((a, b) => a.priority - b.priority);
+	removeMostImportant() {
+		const highestPriority = this.queue[0];
+		const last = this.queue[this.queue.length - 1];
+		this.queue[0] = last;
+		this.queue.pop();
+
+		let elemInd = 0;
+		let [leftInd, rightInd] = [2 * elemInd + 1, 2 * elemInd + 2];
+
+		while (this.queue[leftInd] || this.queue[rightInd]) {
+			let swapInd;
+			if (this.queue[leftInd] && !this.queue[rightInd]) {
+				swapInd = leftInd;
+			} else if (!this.queue[leftInd] && this.queue[rightInd]) {
+				swapInd = rightInd;
+			} else {
+				swapInd = this.queue[leftInd].priority < this.queue[rightInd].priority ? leftInd : rightInd;
+			}
+
+			if (this.queue[elemInd].priority <= this.queue[swapInd].priority) break;
+
+			const current = this.queue[elemInd];
+			this.queue[elemInd] = this.queue[swapInd];
+			this.queue[swapInd] = current;
+
+			elemInd = swapInd;
+			[leftInd, rightInd] = [2 * elemInd + 1, 2 * elemInd + 2];
+		}
+
+		return highestPriority;
 	}
 }
 
@@ -38,66 +83,66 @@ class WeightedGraph {
 		const previous = {};
 		const path = [];
 		let smallest;
+
 		for (const vertex in this.adjacencyList) {
 			if (vertex === start) {
 				distances[vertex] = 0;
-				nodes.enqueue(vertex, 0);
+				nodes.insert(vertex, 0);
 			} else {
 				distances[vertex] = Infinity;
-				nodes.enqueue(vertex, Infinity);
+				nodes.insert(vertex, Infinity);
 			}
 
 			previous[vertex] = null;
 		}
 
-		while (nodes.values.length) {
-			smallest = nodes.dequeue().val;
+		while (nodes.queue.length) {
+			smallest = nodes.removeMostImportant().value;
 			if (smallest === finish) {
 				while (previous[smallest]) {
 					path.push(smallest);
 					smallest = previous[smallest];
 				}
+
+				path.push(smallest);
+
 				break;
 			}
 
 			if (smallest || distances[smallest] !== Infinity) {
-				for (const neighbor in this.adjacencyList[smallest]) {
-					let nextNode = this.adjacencyList[smallest][neighbor];
-					//calculate new distance to neighboring node
-					let candidate = distances[smallest] + nextNode.weight;
-					let nextNeighbor = nextNode.node;
-					if (candidate < distances[nextNeighbor]) {
-						//updating new smallest distance to neighbor
-						distances[nextNeighbor] = candidate;
-						//updating previous - How we got to neighbor
+				for (let i = 0; i < this.adjacencyList[smallest].length; i++) {
+					const nextNode = this.adjacencyList[smallest][i];
+					const newDistance = distances[smallest] + nextNode.weight;
+					const nextNeighbor = nextNode.node;
+					if (newDistance < distances[nextNeighbor]) {
+						distances[nextNeighbor] = newDistance;
 						previous[nextNeighbor] = smallest;
-						//enqueue in priority queue with new priority
-						nodes.enqueue(nextNeighbor, candidate);
+						nodes.insert(nextNeighbor, newDistance);
 					}
 				}
 			}
 		}
 
-		return path.concat(smallest).reverse();
+		return path.reverse();
 	}
 }
 
-// const a = new WeightedGraph();
-// a.addVertex("A");
-// a.addVertex("B");
-// a.addVertex("C");
-// a.addVertex("D");
-// a.addVertex("E");
-// a.addVertex("F");
+const a = new WeightedGraph();
+a.addVertex("A");
+a.addVertex("B");
+a.addVertex("C");
+a.addVertex("D");
+a.addVertex("E");
+a.addVertex("F");
 
-// a.addEdge("A", "B", 4);
-// a.addEdge("A", "C", 2);
-// a.addEdge("B", "E", 3);
-// a.addEdge("C", "D", 2);
-// a.addEdge("C", "F", 4);
-// a.addEdge("D", "E", 3);
-// a.addEdge("D", "F", 1);
-// a.addEdge("E", "F", 1);
+a.addEdge("A", "B", 4);
+a.addEdge("A", "C", 2);
+a.addEdge("B", "E", 3);
+a.addEdge("C", "D", 2);
+a.addEdge("C", "F", 4);
+a.addEdge("D", "E", 3);
+a.addEdge("D", "F", 1);
+a.addEdge("E", "F", 1);
 
 // console.log(a.adjacencyList);
 
@@ -108,24 +153,3 @@ class WeightedGraph {
 // a.enqueue("G", 2);
 // a.enqueue("F", 8);
 // a.enqueue("E", 1);
-
-const ARR = [...Array(10000000)].map((_, i) => i + 1);
-
-let summation = 0;
-
-console.time("my-time");
-
-// for (let i in ARR) {
-// 	summation += ARR[i];
-// }
-
-// ARR.forEach((item) => {
-// 	summation += item;
-// });
-
-for (let i = 0; i < ARR.length; i++) {
-	summation += ARR[i];
-}
-
-console.timeEnd("my-time");
-console.log("ANS -->", summation); // 50000005000000
