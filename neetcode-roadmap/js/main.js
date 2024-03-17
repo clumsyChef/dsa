@@ -12,4 +12,5 @@ import ArrayAndHashing from "./scripts/array-and-hashing";
 // ArrayAndHashing.groupAnagrams();
 // ArrayAndHashing.topKFrequentElements();
 // ArrayAndHashing.productExceptSelf();
-ArrayAndHashing.validSudoku();
+// ArrayAndHashing.validSudoku();
+ArrayAndHashing.longestConsecutiveSequence();

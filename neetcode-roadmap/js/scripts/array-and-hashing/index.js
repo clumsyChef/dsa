@@ -5,6 +5,7 @@ import groupAnagrams from "./groupAnagrams";
 import topKFrequentElements from "./topKFrequentElements";
 import productExceptSelf from "./productExceptSelf";
 import validSudoku from "./validSudoku";
+import longestConsecutiveSequence from "./longestConsecutiveSequence";
 
 const ArrayAndHashing = {
 	containsDuplicate,
@@ -14,6 +15,7 @@ const ArrayAndHashing = {
 	topKFrequentElements,
 	productExceptSelf,
 	validSudoku,
+	longestConsecutiveSequence,
 };
 
 export default ArrayAndHashing;
