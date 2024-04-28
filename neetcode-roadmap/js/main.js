@@ -1,4 +1,5 @@
 import ArrayAndHashing from "./scripts/array-and-hashing";
+import TwoPointers from "./scripts/two-pointers";
 
 /* 
   In every main function solution_1 is my approach and others are the one that I found.
@@ -13,4 +14,8 @@ import ArrayAndHashing from "./scripts/array-and-hashing";
 // ArrayAndHashing.topKFrequentElements();
 // ArrayAndHashing.productExceptSelf();
 // ArrayAndHashing.validSudoku();
-ArrayAndHashing.longestConsecutiveSequence();
+// ArrayAndHashing.longestConsecutiveSequence();
+
+// Two Pointers
+
+TwoPointers.validPalindrome();
