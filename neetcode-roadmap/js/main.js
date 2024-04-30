@@ -19,4 +19,5 @@ import TwoPointers from "./scripts/two-pointers";
 // Two Pointers
 
 // TwoPointers.validPalindrome();
-TwoPointers.twoSum2();
+// TwoPointers.twoSum2();
+TwoPointers.threeSumTriplets();
