@@ -22,13 +22,26 @@ const main = {
 		return !myArr.length;
 		// return true;
 	},
+
+	// Bad Solution -> commented and uncommented both works. but they take time as it will go through whole string multiple times.
+	solution_2(s) {
+		// while (s.includes("()") || s.includes("{}") || s.includes("[]")) {
+		// 	s = s.replace("()", "").replace("{}", "").replace("[]", "");
+		// }
+		// return /(\(\)|\[\]|\{\})/g.test(s);
+		while (/(\(\)|\[\]|\{\})/g.test(s)) {
+			s = s.replace(/(\(\)|\[\]|\{\})/g, "");
+		}
+
+		return !s.length;
+	},
 };
 
 const validParenthesis = () => {
-	console.log(main.solution_1("()"));
-	console.log(main.solution_1("()[]{}"));
-	console.log(main.solution_1("(]"));
-	console.log(main.solution_1("(("));
+	console.log(main.solution_2("()"));
+	console.log(main.solution_2("()[]{}"));
+	console.log(main.solution_2("(]"));
+	console.log(main.solution_2("(("));
 };
 
 export default validParenthesis;
