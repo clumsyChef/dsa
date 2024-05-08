@@ -16,8 +16,6 @@ MinStack.prototype.push = function (val) {
  * @return {void}
  */
 MinStack.prototype.pop = function () {
-	const lastVal = this.stack.pop();
-	// this.min = Math.min(this.min, lastVal);
 	this.min = Math.min(...this.stack);
 };
 
