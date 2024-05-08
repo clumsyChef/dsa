@@ -27,4 +27,5 @@ import TwoPointers from "./scripts/two-pointers";
 
 // Stacks
 
-Stacks.validParenthesis();
+// Stacks.validParenthesis();
+Stacks.ReversePolishNotation();
