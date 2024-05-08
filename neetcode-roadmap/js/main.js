@@ -1,4 +1,5 @@
 import ArrayAndHashing from "./scripts/array-and-hashing";
+import Stacks from "./scripts/stacks";
 import TwoPointers from "./scripts/two-pointers";
 
 /* 
@@ -22,4 +23,8 @@ import TwoPointers from "./scripts/two-pointers";
 // TwoPointers.twoSum2();
 // TwoPointers.threeSumTriplets();
 // TwoPointers.mostWaterContainer();
-TwoPointers.trappingRainWater();
+// TwoPointers.trappingRainWater();
+
+// Stacks
+
+Stacks.validParenthesis();

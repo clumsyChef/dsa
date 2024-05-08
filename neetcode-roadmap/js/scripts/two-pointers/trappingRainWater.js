@@ -1,8 +1,8 @@
 const main = {
+	// Brute force -> O(N^2)
 	solution_1(height) {
 		let l = 0;
 		let total = 0;
-		let k = 0;
 		while (l < height.length) {
 			let r = l + 1;
 			let maxInd = r;
@@ -30,6 +30,7 @@ const main = {
 		return total;
 	},
 
+	// O(N)
 	solution_2(height) {
 		const maxLeft = [];
 		const maxRight = [];
