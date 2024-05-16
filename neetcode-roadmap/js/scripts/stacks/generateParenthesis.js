@@ -10,7 +10,6 @@ const main = {
 			}
 
 			if (open < n) {
-				console.log(myStack);
 				myStack.push("(");
 				recurr(open + 1, close);
 				myStack.pop();
