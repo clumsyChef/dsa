@@ -29,4 +29,5 @@ import TwoPointers from "./scripts/two-pointers";
 
 // Stacks.validParenthesis();
 // Stacks.ReversePolishNotation();
-Stacks.generateParenthesis();
+// Stacks.generateParenthesis();
+Stacks.dailyTemperatures();
