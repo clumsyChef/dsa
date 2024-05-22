@@ -19,6 +19,7 @@ const main = {
 		return stack.length;
 	},
 
+	// Not a stack solution
 	solution_2(target, position, speed) {
 		const n = speed.length;
 		const v = [];
