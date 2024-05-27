@@ -1,4 +1,5 @@
 import ArrayAndHashing from "./scripts/array-and-hashing";
+import BinarySearch from "./scripts/binary-search";
 import Stacks from "./scripts/stacks";
 import TwoPointers from "./scripts/two-pointers";
 
@@ -31,4 +32,9 @@ import TwoPointers from "./scripts/two-pointers";
 // Stacks.ReversePolishNotation();
 // Stacks.generateParenthesis();
 // Stacks.dailyTemperatures();
-Stacks.carFleet();
+// Stacks.carFleet();
+// Stacks.largestRectangleHistogram();
+
+// BinarySearch
+
+BinarySearch.binarySearch();
