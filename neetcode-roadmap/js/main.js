@@ -37,4 +37,5 @@ import TwoPointers from "./scripts/two-pointers";
 
 // BinarySearch
 
-BinarySearch.binarySearch();
+// BinarySearch.binarySearch();
+BinarySearch.search2DMatrix();
