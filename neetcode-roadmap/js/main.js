@@ -38,4 +38,5 @@ import TwoPointers from "./scripts/two-pointers";
 // BinarySearch
 
 // BinarySearch.binarySearch();
-BinarySearch.search2DMatrix();
+// BinarySearch.search2DMatrix();
+BinarySearch.kokoEatingBananas();
