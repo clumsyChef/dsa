@@ -41,6 +41,7 @@ const minimumRotatedSortedArray = () => {
 	console.log(main.solution_2([4, 5, 0, 1, 2, 3])); // 0
 	console.log(main.solution_2([4, 5, 6, 7])); // 4
 	console.log(main.solution_2([7, 8, 1, 2, 3, 4, 5, 6])); // 1
+	console.log(main.solution_2([7])); // 7
 };
 
 export default minimumRotatedSortedArray;
